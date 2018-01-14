@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import SelectFilter from './components/SelectFilter';
+import FlightsList from './components/FlightsList';
 
 const Container = styled.div`
   width: 1170px;
@@ -15,6 +16,7 @@ class App extends Component {
     return (
       <Container>
         <SelectFilter />
+        <FlightsList />
       </Container>
     );
   }
