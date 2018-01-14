@@ -32,6 +32,10 @@
     "eslint-plugin-import": "2.8.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.5.1",
-    "husky": "^0.14.3"
+    "husky": "^0.14.3",
+    "now": "^9.1.0"
+  },
+  "now": {
+    "alias": "react-redux-trip-list"
   }
 }
