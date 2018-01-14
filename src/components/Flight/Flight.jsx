@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import moment from 'moment';
 import { media } from '../../styleUtils';
@@ -38,6 +39,18 @@ const Cities = styled.div`
   font-weight: bold;
 `;
 
+const propTypes = {
+  flight: PropTypes.shape({
+    arrival: PropTypes.string.isRequired,
+    carrier: PropTypes.string.isRequired,
+    departure: PropTypes.string.isRequired,
+    direction: PropTypes.shape({
+      from: PropTypes.string.isRequired,
+      to: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
 const Flight = ({
   flight: {
     arrival, carrier, departure, direction: { from, to },
@@ -55,5 +68,7 @@ const Flight = ({
     </Body>
   </Wrapper>
 );
+
+Flight.propTypes = propTypes;
 
 export default Flight;

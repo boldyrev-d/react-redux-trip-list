@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import { connect } from 'react-redux';
@@ -14,6 +15,21 @@ const Wrapper = styled.div`
     margin: 15px 0 10px;
   `};
 `;
+
+const propTypes = {
+  // from connect
+  selected: PropTypes.arrayOf(PropTypes.string).isRequired,
+  flights: PropTypes.arrayOf(PropTypes.shape({
+    arrival: PropTypes.string.isRequired,
+    carrier: PropTypes.string.isRequired,
+    departure: PropTypes.string.isRequired,
+    direction: PropTypes.shape({
+      from: PropTypes.string.isRequired,
+      to: PropTypes.string.isRequired,
+    }).isRequired,
+  })).isRequired,
+  changeSelection: PropTypes.func.isRequired,
+};
 
 const SelectFilter = (props) => {
   const { flights, selected } = props;
@@ -38,6 +54,8 @@ const SelectFilter = (props) => {
     </Wrapper>
   );
 };
+
+SelectFilter.propTypes = propTypes;
 
 export default connect(
   state => ({
