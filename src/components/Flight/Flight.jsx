@@ -9,12 +9,41 @@ function formatDate(date) {
 }
 
 const Wrapper = styled.div`
+  position: relative;
   width: 226px;
-  height: 110px;
+  height: 120px;
   margin: 10px 5px;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.3s, color 0.3s;
+  cursor: pointer;
+
+  &:before {
+    background-color: #427aa1;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform-origin: left bottom;
+    transform: rotate3d(0, 0, 1, -90deg);
+    transition: transform 0.3s, background-color 0.3s;
+    width: 150%;
+    will-change: transform;
+    z-index: -1;
+  }
+
+  &:hover {
+    color: #fff;
+  }
+
+  &:hover:before {
+    opacity: 1;
+    transform: rotate3d(0, 0, 1, 0deg);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  }
 
   ${media.mobile`
     width: 100%;
