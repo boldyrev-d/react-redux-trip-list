@@ -4,7 +4,7 @@ import SelectFilter from './components/SelectFilter';
 import FlightsList from './components/FlightsList';
 
 const Container = styled.div`
-  width: 1170px;
+  max-width: 1170px;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
