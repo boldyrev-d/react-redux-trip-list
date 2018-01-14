@@ -5,9 +5,14 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { uniqBy } from 'lodash';
 import { changeSelection } from '../../AC/filters';
+import { media } from '../../styleUtils';
 
 const Wrapper = styled.div`
   margin: 20px 0;
+
+  ${media.mobile`
+    margin: 15px 0 10px;
+  `};
 `;
 
 const SelectFilter = (props) => {

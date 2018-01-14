@@ -13,6 +13,7 @@ const Wrapper = styled.div`
 
   ${media.mobile`
     flex-direction: column;
+    margin: 0;
   `};
 `;
 
