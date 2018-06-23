@@ -19,15 +19,17 @@ const Wrapper = styled.div`
 const propTypes = {
   // from connect
   selected: PropTypes.arrayOf(PropTypes.string).isRequired,
-  flights: PropTypes.arrayOf(PropTypes.shape({
-    arrival: PropTypes.string.isRequired,
-    carrier: PropTypes.string.isRequired,
-    departure: PropTypes.string.isRequired,
-    direction: PropTypes.shape({
-      from: PropTypes.string.isRequired,
-      to: PropTypes.string.isRequired,
-    }).isRequired,
-  })).isRequired,
+  flights: PropTypes.arrayOf(
+    PropTypes.shape({
+      arrival: PropTypes.string.isRequired,
+      carrier: PropTypes.string.isRequired,
+      departure: PropTypes.string.isRequired,
+      direction: PropTypes.shape({
+        from: PropTypes.string.isRequired,
+        to: PropTypes.string.isRequired,
+      }).isRequired,
+    }),
+  ).isRequired,
   changeSelection: PropTypes.func.isRequired,
 };
 
@@ -39,8 +41,8 @@ const SelectFilter = (props) => {
     value: flight.carrier,
   }));
 
-  const handleChange = selectedCarriers =>
-    props.changeSelection(selectedCarriers.map(carrier => carrier.value));
+  // eslint-disable-next-line max-len
+  const handleChange = selectedCarriers => props.changeSelection(selectedCarriers.map(carrier => carrier.value));
 
   return (
     <Wrapper>

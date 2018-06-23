@@ -82,17 +82,28 @@ const propTypes = {
 
 const Flight = ({
   flight: {
-    arrival, carrier, departure, direction: { from, to },
+    arrival,
+    carrier,
+    departure,
+    direction: { from, to },
   },
 }) => (
   <Wrapper>
-    <Carrier>{carrier}</Carrier>
+    <Carrier>
+      {carrier}
+    </Carrier>
     <Body>
       <Cities>
-        {from} - {to}
+        {from}
+        {' '}
+-
+        {to}
       </Cities>
       <div>
-        {formatDate(departure)} - {formatDate(arrival)}
+        {formatDate(departure)}
+        {' '}
+-
+        {formatDate(arrival)}
       </div>
     </Body>
   </Wrapper>

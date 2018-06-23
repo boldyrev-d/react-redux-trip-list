@@ -20,15 +20,17 @@ const Wrapper = styled.div`
 
 const propTypes = {
   // from connect
-  flights: PropTypes.arrayOf(PropTypes.shape({
-    arrival: PropTypes.string.isRequired,
-    carrier: PropTypes.string.isRequired,
-    departure: PropTypes.string.isRequired,
-    direction: PropTypes.shape({
-      from: PropTypes.string.isRequired,
-      to: PropTypes.string.isRequired,
-    }).isRequired,
-  })).isRequired,
+  flights: PropTypes.arrayOf(
+    PropTypes.shape({
+      arrival: PropTypes.string.isRequired,
+      carrier: PropTypes.string.isRequired,
+      departure: PropTypes.string.isRequired,
+      direction: PropTypes.shape({
+        from: PropTypes.string.isRequired,
+        to: PropTypes.string.isRequired,
+      }).isRequired,
+    }),
+  ).isRequired,
 };
 
 const FlightsList = ({ flights }) => {
@@ -40,7 +42,9 @@ const FlightsList = ({ flights }) => {
 
   return (
     <Wrapper>
-      <FlipMove typeName={null}>{flightsList}</FlipMove>
+      <FlipMove typeName={null}>
+        {flightsList}
+      </FlipMove>
     </Wrapper>
   );
 };
@@ -48,11 +52,15 @@ const FlightsList = ({ flights }) => {
 FlightsList.propTypes = propTypes;
 
 export default connect((state) => {
-  const { flights, filters: { selected } } = state;
+  const {
+    flights,
+    filters: { selected },
+  } = state;
 
   // eslint-disable-next-line
   const filteredFlights = flights.filter(
-    flight => (selected.length ? selected.includes(flight.carrier) : true));
+    flight => (selected.length ? selected.includes(flight.carrier) : true),
+  );
 
   return {
     flights: filteredFlights,
